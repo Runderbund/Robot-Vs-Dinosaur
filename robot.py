@@ -1,8 +1,15 @@
 from weapon import Weapon
-class Robot:
 
+class Robot:
     def __init__(self, name):
-        pass
+        self.name = name
+        self.health = 100
+        self.active_weapon = Weapon("Eye-lasers", 12)
 
     def attack(self, dinosaur):
-        pass
+        dinosaur.health -= self.active_weapon.attack_power
+        print (f"{self.name} attacks {dinosaur.name}  with {self.active_weapon} for {self.active_weapon.attack_power} damage.")
+        print (f"{dinosaur.name} has {dinosaur.health} health remaining.")
+        # Bonus: Choose from List of 3 weapons before each attack
+
+range()
