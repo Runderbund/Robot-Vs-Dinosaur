@@ -8,8 +8,6 @@ class Robot:
 
     def attack(self, dinosaur):
         dinosaur.health -= self.active_weapon.attack_power
-        print (f"{self.name} attacks {dinosaur.name}  with {self.active_weapon} for {self.active_weapon.attack_power} damage.")
-        print (f"{dinosaur.name} has {dinosaur.health} health remaining.")
+        print (f"{self.name} attacks {dinosaur.name} with {self.active_weapon.name} for {self.active_weapon.attack_power} damage.")
+        print (f"{dinosaur.name} has {max(dinosaur.health, 0)} health remaining.\n")
         # Bonus: Choose from List of 3 weapons before each attack
-
-range()
