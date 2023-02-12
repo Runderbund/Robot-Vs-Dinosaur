@@ -1,13 +1,18 @@
 from weapon import Weapon
+import random
 
 class Robot:
     def __init__(self, name):
         self.name = name
-        self.health = 100
-        self.active_weapon = Weapon("Eye-lasers", 12)
+        self.health = random.randint(50, 150)
+        self.choose_weapon()
 
     def attack(self, dinosaur):
+        self.choose_weapon()
         dinosaur.health -= self.active_weapon.attack_power
-        print (f"{self.name} attacks {dinosaur.name} with {self.active_weapon.name} for {self.active_weapon.attack_power} damage.")
+        print (f"Robot {self.name} attacks {dinosaur.name} with {self.active_weapon.name} for {self.active_weapon.attack_power} damage.")
         print (f"{dinosaur.name} has {max(dinosaur.health, 0)} health remaining.\n")
-        # Bonus: Choose from List of 3 weapons before each attack
+    
+    def choose_weapon(self):
+        weapon_list = [Weapon("Eye-lasers", 12), Weapon("Sword", 10), Weapon("Shuriken", 5)]
+        self.active_weapon = weapon_list[random.randint(0,2)]

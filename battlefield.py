@@ -1,11 +1,11 @@
 from dinosaur import Dinosaur
 from robot import Robot
 
+
 class Battlefield:
     def __init__(self):
         self.robot = Robot("Marta")
-        self.dinosaur = Dinosaur("Bob", 15)
-        
+        self.dinosaur = Dinosaur("Bob")
     
     def run_game(self):
         self.display_welcome()
@@ -17,9 +17,7 @@ class Battlefield:
         print ("Welcome to the battlefield!\n") 
 
     def battle_phase(self):
-        #Make random start late
-        # This is a clunky way to do it, but I don't think I'd separate display_welcome
-        # battle_phase and run_game to start with.
+        #Make random start later
         self.robot.attack(self.dinosaur)
         if self.dinosaur.health > 0:
             self.dinosaur.attack(self.robot)
