@@ -17,14 +17,13 @@ class Battlefield:
         print ("Welcome to the battlefield!\n") 
 
     def battle_phase(self):
-        #Make random start later
         self.robot.attack(self.dinosaur)
         if self.dinosaur.health > 0:
             self.dinosaur.attack(self.robot)
 
     def display_winner(self):
-        winner, loser = self.dinosaur.name, self.robot.name
+        winner, loser = self.dinosaur, self.robot
         if self.robot.health > self.dinosaur.health:
-             winner, loser = self.robot.name, self.dinosaur.name
-        print (f"{winner} made {loser} extinct!")
-        print (f"{winner} wins!")
+             winner, loser = self.robot, self.dinosaur
+        print (f"{winner.name} made {loser.name} extinct!")
+        print (f"{winner.name} wins!")
