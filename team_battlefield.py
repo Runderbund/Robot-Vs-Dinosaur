@@ -22,10 +22,8 @@ class Team_Battlefield:
             robot.attack(dinosaur)
             if dinosaur.health > 0:
                 dinosaur.attack(robot)
-        if robot.health == 0:
+        if robot.health <= 0:
             self.robo_fleet.remove_robot(0)
-            print (self.robo_fleet.robots())
-            #Add messages for individual victory 
         else:
             self.dino_herd.remove_dino(0)
 
