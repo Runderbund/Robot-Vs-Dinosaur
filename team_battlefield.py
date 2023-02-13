@@ -9,22 +9,33 @@ class Team_Battlefield:
     
     def run_game(self):
         self.display_welcome()
-        while self.robot.health > 0 and self.dinosaur.health > 0: # Change to team members left
-            self.battle_phase()
+        while self.robo_fleet.check_robots_left() and self.dino_herd.check_dinos_left():
+            self.battle_phase(self.robo_fleet.robots[0], self.dino_herd.dinos[0])
         self.display_winner()
 
     def display_welcome(self):
         print ("Welcome to the battlefield!\n") 
 
-    def battle_phase(self): #Use this in herd battle method
+    def battle_phase(self, robot, dinosaur): #Use this in herd battle method
         #Make random start later
-        self.robot.attack(self.dinosaur)
-        if self.dinosaur.health > 0:
-            self.dinosaur.attack(self.robot)
+        while robot.health > 0 and dinosaur.health > 0:
+            robot.attack(dinosaur)
+            if dinosaur.health > 0:
+                dinosaur.attack(robot)
+        if robot.health == 0:
+            self.robo_fleet.remove_robot(0)
+            print (self.robo_fleet.robots())
+            #Add messages for individual victory 
+        else:
+            self.dino_herd.remove_dino(0)
 
     def display_winner(self): # Team members, again
-        winner, loser = self.dinosaur.name, self.robot.name
-        if self.robot.health > self.dinosaur.health:
-             winner, loser = self.robot.name, self.dinosaur.name
+        winner, loser = self.robo_fleet.name, self.dino_herd.name
+        if self.dino_herd.check_dinos_left():
+             winner, loser = self.dino_herd.name, self.robo_fleet.name
         print (f"{winner} made {loser} extinct!")
         print (f"{winner} wins!")
+    
+    # def start_team_battle(self):
+    #     combatants_remain = check_robots_left() and 
+    #     pass
